@@ -1,0 +1,183 @@
+<!DOCTYPE html> <html lang=en> <head> <meta charset=utf-8> <title>winkNLP - NLP in Node.js</title> <script src="/wink-nlp/scripts/prettify/prettify.js"></script> <script src="/wink-nlp/scripts/prettify/lang-css.js"></script> <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]--> <link rel=stylesheet href="/wink-nlp/styles/prettify.css"> <link rel=stylesheet href="/wink-nlp/styles/jsdoc.css"> <meta name=viewport content="width=device-width, initial-scale=1.0"> </head> <body> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47082559-2"></script> <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-47082559-2');
+  </script> <script src="https://use.typekit.net/cwc1qce.js"></script> <script>
+    ((window.gitter = {}).chat = {}).options = {
+      room: 'winkjs/Lobby'
+    };
+    window.onload = function () {
+      document.querySelector('.gitter-open-chat-button').innerText = 'Need help?'
+      document.querySelector('.gitter-open-chat-button').style.display = 'block';
+    }
+  </script> <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script> <script>try{Typekit.load({ async: true });}catch(e){}</script> <style media=screen>
+    .navbar {
+      border-top: 4px solid #6C307D;
+      box-sizing: border-box;
+      height: 64px;
+      background-color: #222;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1030;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .navbar-header {
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    .navbar-header a img {
+      height: 24px;
+    }
+
+    .navbar a {
+      color: #fff;
+      line-height: 60px;
+      margin-left: 0;
+    }
+
+    .navbar a.navbar-brand {
+      margin-left: 20px;
+      display: block;
+      min-width: 40px;
+    }
+
+    .navbar-right {
+      margin: 0;
+      line-height: 50px;
+      list-style: none;
+    }
+
+    .navbar-right li {
+      float: left;
+      margin-right: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-left: 20px;
+      font-size: 14px;
+    }
+
+    /* Override docdash */
+    #main {
+      margin-top: 30px;
+    }
+
+    /* Gitter */
+    .gitter-open-chat-button {
+      background: #6C307D;
+      display: none;
+    }
+
+    .gitter-open-chat-button:hover {
+      opacity: 0.8;
+      background: #6C307D;
+    }
+
+    .gitter-chat-embed {
+      top: 64px;
+    }
+
+    .leave-feedback-button {
+      right: 175px;
+      background: #6C307D;
+      color: #fff;
+      z-index: 100;
+      position: fixed;
+      bottom: 0;
+      padding: 1em 3em;
+      border: 0;
+      border-top-left-radius: .5em;
+      border-top-right-radius: .5em;
+      font-family: sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      cursor: hand;
+      transition: all .3s ease;
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 720px) {
+    .leave-feedback-button{ display: none !important; }
+  }
+  </style> <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if ( window.location.hash ) {
+        openMember();
+        window.setTimeout( function () {
+          window.scrollTo( 0, (window.pageYOffset || document.documentElement.scrollTop) - 72);
+        }, 0)
+      }
+
+      document.getElementById('toc-button').addEventListener('click', function () {
+        if (document.getElementById('side-nav').className === '') {
+          document.getElementById('side-nav').className = 'is-open';
+          document.getElementById('toc-button-img').setAttribute('src','./images/ui/close.svg');
+        } else {
+          document.getElementById('side-nav').className = '';
+          document.getElementById('toc-button-img').setAttribute('src','./images/ui/menu.svg');
+        }
+      })
+    });
+
+    window.addEventListener( 'hashchange', function (e) {
+      e.stopPropagation();
+      openMember();
+    } );
+
+    function openMember() {
+      var id = window.location.hash.substr(1),
+      toggler = document.getElementById( id ),
+      offset = toggler.getBoundingClientRect().top,
+      y = window.scrollY + offset - 62 - 10;
+      window.scrollTo(0, y);
+    }
+  </script> <header> <div class=navbar> <div class=navbar-header> <a href="https://winkjs.org/" title=wink class=navbar-brand> <img src="https://winkjs.org/images/logo.svg"> <span>wink</span> </a> </div> <div class=sausage-links> <ul class="nav navbar-nav navbar-right collapse navbar-collapse" id=main-nav> <li><a href="https://winkjs.org/wink-nlp/getting-started.html" class="">Tutorial</a></li> <li><a href="https://winkjs.org/packages.html" class="">Packages</a></li> <li><a href="https://winkjs.org/showcase.html" class="">Showcase</a></li> <li><a href="https://winkjs.org/blog.html" class="">Blog</a></li> <li><a href="http://github.com/winkjs">Github</a></li> <li><a href="https://winkjs.org/about.html" class="">About</a></li> </ul> </div> </div> </header> <div id=toc-button> <img src="./images/ui/menu.svg" alt="" id=toc-button-img> </div> <div class=content-container> <div class=main-container> <div id=main> <section> <article> <h1 id=winknlp>winkNLP</h1> <h2 id=developer-friendly-nlp->Developer friendly NLP ✨</h2> <p><a href="https://winkjs.org/"><img align=right src="https://decisively.github.io/wink-logos/logo-title.png" width=100px /></a></p> <p>winkNLP is a JavaScript library for Natural Language Processing (NLP). Designed specifically to make development of NLP solutions <strong>easier</strong> and <strong>faster</strong>, winkNLP is optimized for the right balance of performance and accuracy. The package can handle large amount of raw text at speeds over <strong>525,000 tokens/second</strong>. And with a test coverage of ~100%, winkNLP is a tool for building production grade systems with confidence.</p> <h2 id=features>Features</h2> <p>It packs a rich feature set into a small foot print codebase of <a href="https://coveralls.io/github/winkjs/wink-nlp?branch=master">under 1500 lines</a>:</p> <ol> <li>Lossless &amp; multilingual tokenizer</li> <li>Developer friendly and intuitive API</li> <li>Built-in API to aid text visualization</li> <li>Easy information extraction from raw text</li> <li>Extensive text processing features such as bag-of-words, frequency table, stop word removal, readability statistics computation and many more.</li> <li>Pre-trained models with sizes starting from less than 3MB onwards</li> <li>BM25-based vectorizer</li> <li>Multiple similarity methods</li> <li>Word vector integration</li> <li>Comprehensive NLP pipeline covering tokenization, sentence boundary detection, negation handling, sentiment analysis, part-of-speech (pos) tagging, lemmatization, named entity extraction, custom entities detection and pattern matching</li> <li>No external dependencies</li> <li>Runs on web browsers.</li> </ol> <h2 id=installation>Installation</h2> <p>Use <a href="https://www.npmjs.com/package/wink-nlp">npm</a> install:</p> <pre class="prettyprint source"><code>npm install wink-nlp --save</code></pre> <p>In order to use winkNLP after its installation, you also need to install a language model. The following command installs the latest version of default language model — the light weight English language model called <a href="https://github.com/winkjs/wink-eng-lite-model">wink-eng-lite-model</a>.</p> <pre class="prettyprint source"><code>node -e "require( 'wink-nlp/models/install' )"</code></pre> <p>Any required model can be installed by specifying its name as the last parameter in the above command. For example:</p> <pre class="prettyprint source"><code>node -e "require( 'wink-nlp/models/install' )" wink-eng-lite-model</code></pre> <h3 id=how-to-install-for-web-browser>How to install for Web Browser</h3> <p>If you’re using winkNLP in the browser use the <a href="https://www.npmjs.com/package/wink-eng-lite-web-model">wink-eng-lite-web-model</a> instead. Learn about its installation and usage in our <a href="https://winkjs.org/wink-nlp/wink-nlp-in-browsers.html">guide to using winkNLP in the browser</a>.</p> <h2 id=getting-started>Getting Started</h2> <p>The "Hello World!" in winkNLP is given below. As the next step, we recommend a dive into <a href="https://winkjs.org/wink-nlp/getting-started.html">winkNLP's concepts</a>.</p> <pre class="prettyprint source"><code>// Load wink-nlp package  &amp; helpers.
+const winkNLP = require( 'wink-nlp' );
+// Load "its" helper to extract item properties.
+const its = require( 'wink-nlp/src/its.js' );
+// Load "as" reducer helper to reduce a collection.
+const as = require( 'wink-nlp/src/as.js' );
+// Load english language model — light version.
+const model = require( 'wink-eng-lite-model' );
+// Instantiate winkNLP.
+const nlp = winkNLP( model );
+
+// NLP Code.
+const text = 'Hello   World🌎! How are you?';
+const doc = nlp.readDoc( text );
+
+console.log( doc.out() );
+// -&gt; Hello   World🌎! How are you?
+
+console.log( doc.sentences().out() );
+// -&gt; [ 'Hello   World🌎!', 'How are you?' ]
+
+console.log( doc.entities().out( its.detail ) );
+// -&gt; [ { value: '🌎', type: 'EMOJI' } ]
+
+console.log( doc.tokens().out() );
+// -&gt; [ 'Hello', 'World', '🌎', '!', 'How', 'are', 'you', '?' ]
+
+console.log( doc.tokens().out( its.type, as.freqTable ) );
+// -&gt; [ [ 'word', 5 ], [ 'punctuation', 2 ], [ 'emoji', 1 ] ]</code></pre> <p>Experiment with the above code on <a href="https://npm.runkit.com/wink-nlp">RunKit</a>.</p> <h3 id=explore-further>Explore Further</h3> <p>Dive into <a href="https://winkjs.org/wink-nlp/getting-started.html">winkNLP's concepts</a> or head to <strong><a href="https://observablehq.com/collection/@winkjs/winknlp-recipes">winkNLP recipes</a></strong> for common NLP tasks or just explore live <a href="https://winkjs.org/showcase.html">showcases</a> to learn:</p> <h4 id=wikipedia-timelinehttpswinkjsorgshowcase-timeline-><a href="https://winkjs.org/showcase-timeline/">Wikipedia Timeline</a> ⏳</h4> <p>Reads any wikipedia article and generates a visual timeline of all its events.</p> <h4 id=nlp-wizardhttpswinkjsorgshowcase-wiz-><a href="https://winkjs.org/showcase-wiz/">NLP Wizard</a> 🧙</h4> <p>Performs tokenization, sentence boundary detection, pos tagging, named entity detection and sentiment analysis of user input text in real time.</p> <h4 id=hashtag-sentimenthttpswinkjsorgshowcase-hashtag-><a href="https://winkjs.org/showcase-hashtag/">Hashtag Sentiment</a> 🎭</h4> <p>Analyzes sentiments of recent tweets containing the given hashtag.</p> <h2 id=speed--accuracy>Speed &amp; Accuracy</h2> <p>The <a href="https://winkjs.org/wink-nlp/">winkNLP</a> processes raw text at <strong>~525,000 tokens per second</strong> with its default language model — <a href="https://github.com/winkjs/wink-eng-lite-model">wink-eng-lite-model</a>, when <a href="https://github.com/bestiejs/benchmark.js">benchmarked</a> using "Ch 13 of Ulysses by James Joyce" on a 2.2 GHz Intel Core i7 machine with 16GB RAM. The processing included the entire NLP pipeline — tokenization, sentence boundary detection, negation handling, sentiment analysis, part-of-speech tagging, and named entity extraction. This speed is way ahead of the prevailing speed benchmarks.</p> <p>The benchmark was conducted on <a href="https://nodejs.org/en/about/releases/">Node.js versions 14.8.0, and 12.18.3</a>.</p> <p>It pos tags a subset of WSJ corpus with an accuracy of <strong>~94.7%</strong> — this includes <em>tokenization of raw text prior to pos tagging</em>. The current state-of-the-art is at ~97% accuracy but at lower speeds and is generally computed using gold standard pre-tokenized corpus.</p> <p>Its general purpose sentiment analysis delivers a <a href="https://en.wikipedia.org/wiki/F1_score">f-score</a> of <strong>~84.5%</strong>, when validated using Amazon Product Review <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/00331/">Sentiment Labelled Sentences Data Set</a> at <a href="https://archive.ics.uci.edu/ml/index.php">UCI Machine Learning Repository</a>. The current benchmark accuracy for <strong>specifically trained</strong> models can range around 95%.</p> <h2 id=memory-requirement>Memory Requirement</h2> <p>Wink NLP delivers this performance with the minimal load on RAM. For example, it processes the entire <a href="https://en.wikisource.org/wiki/History_of_India/Volume_1">History of India Volume I</a> with a total peak memory requirement of under <strong>80MB</strong>. The book has around 350 pages which translates to over 125,000 tokens.</p> <h2 id=documentation>Documentation</h2> <ul> <li><a href="https://winkjs.org/wink-nlp/getting-started.html">Concepts</a> — everything you need to know to get started.</li> <li><a href="https://winkjs.org/wink-nlp/read-doc.html">API Reference</a> — explains usage of APIs with examples.</li> <li><a href="https://github.com/winkjs/wink-nlp/blob/master/CHANGELOG.md">Change log</a> — version history along with the details of breaking changes, if any.</li> <li><a href="https://winkjs.org/showcase.html">Showcases</a> — live examples with code to give you a head start.</li> </ul> <h2 id=need-help>Need Help?</h2> <h3 id=usage-query->Usage query 👩🏽‍💻</h3> <p>Please ask at <a href="https://stackoverflow.com/">Stack Overflow</a> or discuss it at <a href="https://gitter.im/winkjs/Lobby">Wink JS Gitter Lobby</a>.</p> <h3 id=bug-report->Bug report 🐛</h3> <p>If you spot a bug and the same has not yet been reported, raise a new <a href="https://github.com/winkjs/wink-nlp/issues">issue</a> or consider fixing it and sending a PR.</p> <h3 id=new-feature->New feature ✨</h3> <p>Looking for a new feature, request it via a new <a href="https://github.com/winkjs/wink-nlp/issues">issue</a> or consider becoming a <a href="https://github.com/winkjs/wink-nlp/blob/master/CONTRIBUTING.md">contributor</a>.</p> <h2 id=about-wink>About wink</h2> <p><a href="https://winkjs.org/">Wink</a> is a family of open source packages for <strong>Natural Language Processing</strong>, <strong>Machine Learning</strong>, and <strong>Statistical Analysis</strong> in NodeJS. The code is <strong>thoroughly documented</strong> for easy human comprehension and has a <strong>test coverage of ~100%</strong> for reliability to build production grade solutions.</p> <h2 id=copyright--license>Copyright &amp; License</h2> <p><strong>Wink NLP</strong> is copyright 2017-21 <a href="https://graype.in/">GRAYPE Systems Private Limited</a>.</p> </article> </section> </div> </div> <div class=side-nav-container> <nav id=side-nav class=side-nav> <h2><a href="/wink-nlp/">Overview</a></h2> <h2><a href="https://github.com/winkjs/wink-nlp">Github</a></h2> <h3>Concepts</h3> <ul> <li><a href="getting-started.html">Getting started</a></li> <li><a href="processing-pipeline.html">Processing Pipeline</a></li> <li><a href="document.html">Document</a></li> <li><a href="collection.html">Collection</a></li> <li><a href="item.html">Item & its properties</a></li> <li><a href="leveraging-out.html">Leveraging .out()</a></li> <li><a href="visualizing-markup.html">Visualizing using markup</a></li> <li><a href="custom-entities.html">Custom Entities</a></li> <li><a href="wink-nlp-in-browsers.html">WinkNLP in browsers</a></li> <li><a href="how-tos.html">How to's</a></li> </ul> <h3>Utilities</h3> <ul> <li><a href="its-as-helper.html">its & as helper</a></li> <li><a href="similarity.html">Similarity</a></li> <li><a href="bm25-vectorizer.html">BM25 Vectorizer</a></li> <li><a href="language-models.html">Language models</a></li> <li><a href="part-of-speech.html">Part-of-Speech tags</a></li> </ul> <h3>API</h3> <ul> <li><a href="read-doc.html">readDoc</a></li> <li><a href="learn-custom-entities.html">learnCustomEntities</a></li> <li><a href="sentences.html">sentences</a></li> <li><a href="entities.html">entities</a></li> <li><a href="custom-entities-method.html">customEntities</a></li> <li><a href="tokens.html">tokens</a></li> <li><a href="out.html">out</a></li> <li><a href="each.html">each</a></li> <li><a href="length.html">length</a></li> <li><a href="item-at.html">itemAt</a></li> <li><a href="filter.html">filter</a></li> <li><a href="markup.html">markup</a></li> <li><a href="index-method.html">index</a></li> <li><a href="parent-document.html">parentDocument</a></li> <li><a href="parent-sentence.html">parentSentence</a></li> <li><a href="parent-entity.html">parentEntity</a></li> <li><a href="parent-custom-entity.html">parentCustomEntitiy</a></li> </ul> </nav> </div> </div> <br class=clear> <footer> <p> &copy; <a href="http://graype.in">graype systems</a> pvt. ltd. </p> </footer> <script>prettyPrint();</script> <script src="scripts/linenumber.js"></script> <script src="https://embed.runkit.com"></script> <script>
+    var els = document.getElementsByClassName("runkit");
+
+    Array.prototype.forEach.call(els, function(el) {
+      // Do stuff here
+      var source = el.innerHTML;
+      el.innerHTML = '';
+      var n = RunKit.createNotebook( {
+        element: el,
+        source: source
+      } );
+    });
+  </script> <a href="https://docs.google.com/forms/d/e/1FAIpQLScormuaSPmnZ_jD2hqNXlfoj_vKDw-LKZ1rE69MCi9kaBGvGw/viewform?entry.754933393=/wink-nlp/" target=_blank class=leave-feedback-button style="display: block;">Leave feedback</a> </body> </html>
